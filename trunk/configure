@@ -61,7 +61,8 @@ if [ $SRS_UTEST = YES ]; then SrsUtestMakeEntry="(cd ${SRS_OBJS_DIR}/utest; \$(M
 # where srs module is a dir which contains a config file.
 SRS_MODULES=()
 __mfiles=`find modules -name "config"` && for __mfile in $__mfiles; do
-    SRS_MODULES+=("`dirname $__mfile`")
+    #SRS_MODULES+=("`dirname $__mfile`")
+    SRS_MODULES=(${SRS_MODULES[*]} "`dirname $__mfile`")
 done
 
 # variables for makefile for all modules.
@@ -181,7 +182,8 @@ if [ $SRS_EXPORT_LIBRTMP_PROJECT = NO ]; then
     # add each modules for app
     for SRS_MODULE in ${SRS_MODULES[*]}; do
         . $SRS_MODULE/config
-        MODULE_FILES+=("${SRS_MODULE_APP[*]}")
+        #MODULE_FILES+=("${SRS_MODULE_APP[*]}")
+        MODULE_FILES=(${MODULE_FILES[*]} "${SRS_MODULE_APP[*]}")
         DEFINES="${DEFINES} ${SRS_MODULE_DEFINES}"
     done
     APP_INCS="src/app"; MODULE_DIR=${APP_INCS} . auto/modules.sh
@@ -205,7 +207,8 @@ if [ $SRS_EXPORT_LIBRTMP_PROJECT = NO ]; then
     # add each modules for main
     for SRS_MODULE in ${SRS_MODULES[*]}; do
         . $SRS_MODULE/config
-        MODULE_FILES+=("${SRS_MODULE_MAIN[*]}")
+        #MODULE_FILES+=("${SRS_MODULE_MAIN[*]}")
+        MODULE_FILES=( ${MODULE_FILES[*]} "${SRS_MODULE_MAIN[*]}")
     done
     MAIN_INCS="src/main"; MODULE_DIR=${MAIN_INCS} . auto/modules.sh
     MAIN_OBJS="${MODULE_OBJS[@]}"
@@ -222,7 +225,8 @@ if [ $SRS_EXPORT_LIBRTMP_PROJECT = NO ]; then
     # add each modules for main
     for SRS_MODULE in ${SRS_MODULES[*]}; do
         . $SRS_MODULE/config
-        MAIN_ENTRANCES+=("${SRS_MODULE_MAIN[*]}")
+        #MAIN_ENTRANCES+=("${SRS_MODULE_MAIN[*]}")
+        MAIN_ENTRANCES=( ${MAIN_ENTRANCES[*]} "${SRS_MODULE_MAIN[*]}")
     done
     # 
     # all depends libraries
@@ -410,7 +414,7 @@ install-api: install
 	@sed -i "s|^ROOT=.*|ROOT=\"\$(SRS_PREFIX)\"|g" \$(__REAL_INSTALL)/etc/init.d/srs-api
 	@echo ""
 	@echo "api installed, to link and start api:"
-	@echo "     sudo ln -sf \$(SRS_PREFIX)/etc/init.d/srs-api /etc/init.d/srs-api"
+	@echo "     ln -sf \$(SRS_PREFIX)/etc/init.d/srs-api /etc/init.d/srs-api"
 	@echo "     /etc/init.d/srs-api start"
 	@echo "     http://\$(shell bash auto/local_ip.sh):8085"
 	@echo "@see: https://github.com/simple-rtmp-server/srs/wiki/v1_CN_LinuxService"
@@ -433,7 +437,7 @@ install:
 	@sed -i "s|^ROOT=.*|ROOT=\"\$(SRS_PREFIX)\"|g" \$(__REAL_INSTALL)/etc/init.d/srs
 	@echo ""
 	@echo "srs installed, to link and start srs:"
-	@echo "     sudo ln -sf \$(SRS_PREFIX)/etc/init.d/srs /etc/init.d/srs"
+	@echo "     ln -sf \$(SRS_PREFIX)/etc/init.d/srs /etc/init.d/srs"
 	@echo "     /etc/init.d/srs start"
 	@echo "@see: https://github.com/simple-rtmp-server/srs/wiki/v1_CN_LinuxService"
 
@@ -618,11 +622,11 @@ fi
 # next step
 #####################################################################################
 if [ $SRS_EXPORT_LIBRTMP_PROJECT = NO ]; then
-    ip=`ifconfig|grep "inet addr"| grep -v "127.0.0.1"|awk '{print $2}'|awk -F ':' 'NR==1 {print $2}'`
+    ip=`/sbin/ifconfig|grep "inet addr"| grep -v "127.0.0.1"|awk '{print $2}'|awk -F ':' 'NR==1 {print $2}'`
     echo ""
     echo "to run 3rdparty application:"
     if [ $SRS_NGINX = YES ]; then
-        echo "\" sudo ./objs/nginx/sbin/nginx  \" to start the nginx http server for hls"
+        echo "\" ./objs/nginx/sbin/nginx  \" to start the nginx http server for hls"
     fi
     if [ $SRS_FFMPEG_TOOL = YES ]; then
         echo -e "\" ./objs/ffmpeg/bin/ffmpeg  \" is used for live stream transcoding"

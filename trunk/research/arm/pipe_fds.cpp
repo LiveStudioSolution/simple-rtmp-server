@@ -4,7 +4,7 @@ g++ pipe_fds.cpp -g -O0 -o pipe_fds
 About the limits:
 [winlin@dev6 srs]$ ulimit -n
     1024
-[winlin@dev6 srs]$ sudo lsof -p 21182
+[winlin@dev6 srs]$ lsof -p 21182
     pipe_fds 21182 winlin    0u   CHR  136,4      0t0       7 /dev/pts/4
     pipe_fds 21182 winlin    1u   CHR  136,4      0t0       7 /dev/pts/4
     pipe_fds 21182 winlin    2u   CHR  136,4      0t0       7 /dev/pts/4
@@ -42,7 +42,7 @@ int main(int argc, char** argv)
     }
     
     printf("Press CTRL+C to quit, use bellow command to show the fds opened:\n");
-    printf("    sudo lsof -p %d\n", getpid());
+    printf("    lsof -p %d\n", getpid());
     sleep(-1);
     return 0;
 }

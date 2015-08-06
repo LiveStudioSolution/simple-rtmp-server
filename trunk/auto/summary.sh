@@ -83,7 +83,7 @@ echo -e "     |     ${SrsDvrSummaryColor}dvr @see: https://github.com/simple-rtm
 echo -e "     |     ${SrsDvrSummaryColor}dvr: record RTMP stream to flv files.\${BLACK}"
 echo -e "     |     ${SrsNginxSummaryColor}nginx @see: https://github.com/simple-rtmp-server/srs/wiki/v2_CN_DeliveryHLS\${BLACK}"
 echo -e "     |     ${SrsNginxSummaryColor}nginx: delivery HLS stream by nginx\${BLACK}"
-echo -e "     |     ${SrsNginxSummaryColor}nginx: sudo ./objs/nginx/sbin/nginx\${BLACK}"
+echo -e "     |     ${SrsNginxSummaryColor}nginx: ./objs/nginx/sbin/nginx\${BLACK}"
 echo -e "     |     ${SrsSslSummaryColor}ssl @see: https://github.com/simple-rtmp-server/srs/wiki/v1_CN_RTMPHandshake\${BLACK}"
 echo -e "     |     ${SrsSslSummaryColor}ssl: support RTMP complex handshake for client required, for instance, flash\${BLACK}"
 echo -e "     |     ${SrsFfmpegSummaryColor}ffmpeg @see: https://github.com/simple-rtmp-server/srs/wiki/v1_CN_FFMPEG\${BLACK}"

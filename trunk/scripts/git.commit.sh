@@ -5,8 +5,8 @@ touch git-ensure-commit &&
 echo "cd `pwd` && git checkout develop &&" >git-ensure-commit &&
 echo "bash `pwd`/git.commit.sh" >>git-ensure-commit &&
 chmod +x git-ensure-commit &&
-sudo rm -f /bin/git-ensure-commit &&
-sudo mv git-ensure-commit /bin/git-ensure-commit
+rm -f /bin/git-ensure-commit &&
+mv git-ensure-commit /bin/git-ensure-commit
 END
 
 echo "submit code to github.com"

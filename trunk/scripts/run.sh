@@ -35,16 +35,16 @@ END
 which getenforce >/dev/null 2>&1
 if [[ 0 -eq $? && `getenforce` != 'Disabled' ]]; then
 	echo -e "${RED}请关闭selinux：${BLACK}";
-	echo -e "${RED}    打开配置文件：sudo vi /etc/sysconfig/selinux${BLACK}";
+	echo -e "${RED}    打开配置文件：vi /etc/sysconfig/selinux${BLACK}";
 	echo -e "${RED}    修改为：SELINUX=disabled${BLACK}";
-	echo -e "${RED}    重启系统：sudo reboot${BLACK}";
+	echo -e "${RED}    重启系统：reboot${BLACK}";
 fi
 
 if [[ -f /etc/init.d/iptables ]]; then
-	sudo /etc/init.d/iptables status >/dev/null 2>&1;
+	/etc/init.d/iptables status >/dev/null 2>&1;
 	if [[ $? -ne 3 ]]; then
 		echo -e "${RED}请关闭防火墙：${BLACK}";
-		echo -e "${RED}    sudo /etc/init.d/iptables stop${BLACK}";
+		echo -e "${RED}    /etc/init.d/iptables stop${BLACK}";
 	fi
 fi
 

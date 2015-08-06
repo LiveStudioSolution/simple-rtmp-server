@@ -84,8 +84,8 @@ lsb_release -a >/dev/null 2>&1
 ret=$?; if [[ $ret -ne 0 ]]; then 
 	failed_msg "lsb_release not found. "
 	failed_msg "to install on centos/debian(ubuntu/respberry-pi):"; 
-	failed_msg "	sudo yum install -y lsb-release"; 
-	failed_msg "	sudo aptitude install -y lsb-release"; 
+	failed_msg "	yum install -y lsb-release"; 
+	failed_msg "	aptitude install -y lsb-release"; 
 	exit $ret; 
 fi
 
@@ -198,6 +198,6 @@ echo "package: ${build_objs}/${zip_dir}.zip"
 echo "install:"
 echo "      unzip -q ${zip_dir}.zip &&"
 echo "      cd ${zip_dir} &&"
-echo "      sudo bash INSTALL"
+echo "      bash INSTALL"
 
 exit 0

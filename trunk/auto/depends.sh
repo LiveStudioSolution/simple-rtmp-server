@@ -16,7 +16,7 @@
 #####################################################################################
 function require_sudoer()
 {
-    sudo echo "" >/dev/null 2>&1
+    echo "" >/dev/null 2>&1
     
     ret=$?; if [[ 0 -ne $ret ]]; then 
         echo "\"$1\" require sudoer failed. ret=$ret";
@@ -46,8 +46,8 @@ function Ubuntu_prepare()
     if [ $SRS_ARM_UBUNTU12 = YES ]; then
         $SrsArmCC --help >/dev/null 2>&1; ret=$?; if [[ 0 -ne $ret ]]; then
             echo "install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi"
-            require_sudoer "sudo apt-get install -y --force-yes gcc-arm-linux-gnueabi g++-arm-linux-gnueabi"
-            sudo apt-get install -y --force-yes gcc-arm-linux-gnueabi g++-arm-linux-gnueabi; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
+            require_sudoer "apt-get install -y --force-yes gcc-arm-linux-gnueabi g++-arm-linux-gnueabi"
+            apt-get install -y --force-yes gcc-arm-linux-gnueabi g++-arm-linux-gnueabi; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
             echo "install gcc-arm-linux-gnueabi g++-arm-linux-gnueabi success"
         fi
     fi
@@ -65,44 +65,44 @@ function Ubuntu_prepare()
     
     gcc --help >/dev/null 2>&1; ret=$?; if [[ 0 -ne $ret ]]; then
         echo "install gcc"
-        require_sudoer "sudo apt-get install -y --force-yes gcc"
-        sudo apt-get install -y --force-yes gcc; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
+        require_sudoer "apt-get install -y --force-yes gcc"
+        apt-get install -y --force-yes gcc; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
         echo "install gcc success"
     fi
     
     g++ --help >/dev/null 2>&1; ret=$?; if [[ 0 -ne $ret ]]; then
         echo "install g++"
-        require_sudoer "sudo apt-get install -y --force-yes g++"
-        sudo apt-get install -y --force-yes g++; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
+        require_sudoer "apt-get install -y --force-yes g++"
+        apt-get install -y --force-yes g++; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
         echo "install g++ success"
     fi
     
     make --help >/dev/null 2>&1; ret=$?; if [[ 0 -ne $ret ]]; then
         echo "install make"
-        require_sudoer "sudo apt-get install -y --force-yes make"
-        sudo apt-get install -y --force-yes make; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
+        require_sudoer "apt-get install -y --force-yes make"
+        apt-get install -y --force-yes make; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
         echo "install make success"
     fi
     
     patch --help >/dev/null 2>&1; ret=$?; if [[ 0 -ne $ret ]]; then
         echo "install patch"
-        require_sudoer "sudo apt-get install -y --force-yes patch"
-        sudo apt-get install -y --force-yes patch; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
+        require_sudoer "apt-get install -y --force-yes patch"
+        apt-get install -y --force-yes patch; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
         echo "install patch success"
     fi
     
     unzip --help >/dev/null 2>&1; ret=$?; if [[ 0 -ne $ret ]]; then
         echo "install unzip"
-        require_sudoer "sudo apt-get install -y --force-yes unzip"
-        sudo apt-get install -y --force-yes unzip; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
+        require_sudoer "apt-get install -y --force-yes unzip"
+        apt-get install -y --force-yes unzip; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
         echo "install unzip success"
     fi
 
     if [ $SRS_NGINX = YES ]; then
         if [[ ! -f /usr/include/pcre.h ]]; then
             echo "install libpcre3-dev"
-            require_sudoer "sudo apt-get install -y --force-yes libpcre3-dev"
-            sudo apt-get install -y --force-yes libpcre3-dev; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
+            require_sudoer "apt-get install -y --force-yes libpcre3-dev"
+            apt-get install -y --force-yes libpcre3-dev; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
             echo "install libpcre3-dev success"
         fi
     fi
@@ -110,22 +110,22 @@ function Ubuntu_prepare()
     if [ $SRS_FFMPEG_TOOL = YES ]; then
         autoconf --help >/dev/null 2>&1; ret=$?; if [[ 0 -ne $ret ]]; then
             echo "install autoconf"
-            require_sudoer "sudo apt-get install -y --force-yes autoconf"
-            sudo apt-get install -y --force-yes autoconf; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
+            require_sudoer "apt-get install -y --force-yes autoconf"
+            apt-get install -y --force-yes autoconf; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
             echo "install autoconf success"
         fi
         
         libtool --help >/dev/null 2>&1; ret=$?; if [[ 0 -ne $ret ]]; then
             echo "install libtool"
-            require_sudoer "sudo apt-get install -y --force-yes libtool"
-            sudo apt-get install -y --force-yes libtool; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
+            require_sudoer "apt-get install -y --force-yes libtool"
+            apt-get install -y --force-yes libtool; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
             echo "install libtool success"
         fi
         
         if [[ ! -f /usr/include/zlib.h ]]; then
             echo "install zlib1g-dev"
-            require_sudoer "sudo apt-get install -y --force-yes zlib1g-dev"
-            sudo apt-get install -y --force-yes zlib1g-dev; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
+            require_sudoer "apt-get install -y --force-yes zlib1g-dev"
+            apt-get install -y --force-yes zlib1g-dev; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
             echo "install zlib1g-dev success"
         fi
     fi
@@ -158,44 +158,44 @@ function Centos_prepare()
     
     gcc --help >/dev/null 2>&1; ret=$?; if [[ 0 -ne $ret ]]; then
         echo "install gcc"
-        require_sudoer "sudo yum install -y gcc"
-        sudo yum install -y gcc; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
+        require_sudoer "yum install -y gcc"
+        yum install -y gcc; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
         echo "install gcc success"
     fi
     
     g++ --help >/dev/null 2>&1; ret=$?; if [[ 0 -ne $ret ]]; then
         echo "install gcc-c++"
-        require_sudoer "sudo yum install -y gcc-c++"
-        sudo yum install -y gcc-c++; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
+        require_sudoer "yum install -y gcc-c++"
+        yum install -y gcc-c++; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
         echo "install gcc-c++ success"
     fi
     
     make --help >/dev/null 2>&1; ret=$?; if [[ 0 -ne $ret ]]; then
         echo "install make"
-        require_sudoer "sudo yum install -y make"
-        sudo yum install -y make; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
+        require_sudoer "yum install -y make"
+        yum install -y make; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
         echo "install make success"
     fi
     
     patch --help >/dev/null 2>&1; ret=$?; if [[ 0 -ne $ret ]]; then
         echo "install patch"
-        require_sudoer "sudo yum install -y patch"
-        sudo yum install -y patch; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
+        require_sudoer "yum install -y patch"
+        yum install -y patch; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
         echo "install patch success"
     fi
     
     unzip --help >/dev/null 2>&1; ret=$?; if [[ 0 -ne $ret ]]; then
         echo "install unzip"
-        require_sudoer "sudo yum install -y unzip"
-        sudo yum install -y unzip; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
+        require_sudoer "yum install -y unzip"
+        yum install -y unzip; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
         echo "install unzip success"
     fi
 
     if [ $SRS_NGINX = YES ]; then
         if [[ ! -f /usr/include/pcre.h ]]; then
             echo "install pcre-devel"
-            require_sudoer "sudo yum install -y pcre-devel"
-            sudo yum install -y pcre-devel; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
+            require_sudoer "yum install -y pcre-devel"
+            yum install -y pcre-devel; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
             echo "install pcre-devel success"
         fi
     fi
@@ -203,29 +203,29 @@ function Centos_prepare()
     if [ $SRS_FFMPEG_TOOL = YES ]; then
         automake --help >/dev/null 2>&1; ret=$?; if [[ 0 -ne $ret ]]; then
             echo "install automake"
-            require_sudoer "sudo yum install -y automake"
-            sudo yum install -y automake; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
+            require_sudoer "yum install -y automake"
+            yum install -y automake; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
             echo "install automake success"
         fi
         
         autoconf --help >/dev/null 2>&1; ret=$?; if [[ 0 -ne $ret ]]; then
             echo "install autoconf"
-            require_sudoer "sudo yum install -y autoconf"
-            sudo yum install -y autoconf; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
+            require_sudoer "yum install -y autoconf"
+            yum install -y autoconf; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
             echo "install autoconf success"
         fi
         
         libtool --help >/dev/null 2>&1; ret=$?; if [[ 0 -ne $ret ]]; then
             echo "install libtool"
-            require_sudoer "sudo yum install -y libtool"
-            sudo yum install -y libtool; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
+            require_sudoer "yum install -y libtool"
+            yum install -y libtool; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
             echo "install libtool success"
         fi
         
         if [[ ! -f /usr/include/zlib.h ]]; then
             echo "install zlib-devel"
-            require_sudoer "sudo yum install -y zlib-devel"
-            sudo yum install -y zlib-devel; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
+            require_sudoer "yum install -y zlib-devel"
+            yum install -y zlib-devel; ret=$?; if [[ 0 -ne $ret ]]; then return $ret; fi
             echo "install zlib-devel success"
         fi
     fi
@@ -546,9 +546,9 @@ if [ $SRS_HTTP_CALLBACK = YES ]; then
         require_sudoer "install CherryPy-3.2.4"
         echo "install CherryPy-3.2.4"; 
         (
-            sudo rm -rf ${SRS_OBJS}/CherryPy-3.2.4 && cd ${SRS_OBJS} && 
+            rm -rf ${SRS_OBJS}/CherryPy-3.2.4 && cd ${SRS_OBJS} && 
             unzip -q ../3rdparty/CherryPy-3.2.4.zip && cd CherryPy-3.2.4 && 
-            sudo python setup.py install
+            python setup.py install
         )
     fi
     # check status
@@ -655,6 +655,7 @@ if [ $SRS_FFMPEG_TOOL = YES ]; then
     if [[ -f ${SRS_OBJS}/ffmpeg/bin/ffmpeg ]]; then
         echo "ffmpeg-2.1 is ok.";
     else
+		echo "xxxxxxxx";
         echo "build ffmpeg-2.1"; 
         (
             cd ${SRS_OBJS} && pwd_dir=`pwd` && 

@@ -4,14 +4,14 @@ cat <<END >>/dev/null
 touch git2unix &&
 echo "bash `pwd`/git2unix.sh" >git2unix &&
 chmod +x git2unix &&
-sudo rm -f /bin/git2unix &&
-sudo mv git2unix /bin/git2unix
+rm -f /bin/git2unix &&
+mv git2unix /bin/git2unix
 END
 
 dos2unix -V>/dev/null 2>&1
 ret=$?; if [[ 0 -ne $ret ]]; then 
     echo "dos2unix not found." 
-    echo "      sudo yum install -y dos2unix"
+    echo "      yum install -y dos2unix"
     exit $ret
 fi
 

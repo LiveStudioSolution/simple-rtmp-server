@@ -25,7 +25,7 @@ ok_msg "check previous install"
 if [[ -f /etc/init.d/srs ]]; then
     /etc/init.d/srs status >/dev/null 2>&1
     ret=$?; if [[ 0 -eq ${ret} ]]; then 
-        failed_msg "you must stop the service first: sudo /etc/init.d/srs stop"; 
+        failed_msg "you must stop the service first: /etc/init.d/srs stop"; 
         exit 1; 
     fi
 fi
@@ -110,7 +110,7 @@ fi
 echo ""
 echo "see: https://github.com/simple-rtmp-server/srs/wiki/v1_CN_LinuxService"
 echo "install success, you can:"
-echo -e "${GREEN}      sudo /etc/init.d/srs start${BLACK}"
+echo -e "${GREEN}      /etc/init.d/srs start${BLACK}"
 echo "srs root is ${INSTALL}"
 
 exit 0

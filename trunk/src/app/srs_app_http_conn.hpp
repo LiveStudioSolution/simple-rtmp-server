@@ -47,6 +47,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <srs_app_thread.hpp>
 #include <srs_app_conn.hpp>
 #include <srs_app_source.hpp>
+#include <srs_app_http_stream.hpp>
 
 class SrsServer;
 class SrsSource;

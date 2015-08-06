@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo  "xxxxxxxxx" `pwd`
 ff_src_dir="../../3rdparty"
 
 # the jobs to make ffmpeg

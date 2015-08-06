@@ -29,6 +29,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #include <srs_core.hpp>
+#include <srs_kernel_flv.hpp>
+#include <srs_kernel_ts.hpp>
+#include <srs_kernel_aac.hpp>
+#include <srs_kernel_mp3.hpp>
+#include <srs_app_server.hpp>
 
 #include <srs_app_http_conn.hpp>
 

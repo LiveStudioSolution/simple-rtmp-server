@@ -5,7 +5,7 @@ dot:
     http://www.graphviz.org/Download_source.php
     graphviz-2.18.tar.gz 绘图工具
     build_gprof2dot.sh 编译graphviz，命令为dot。
-    要求是sudoer，需要sudo make install。
+    要求是sudoer，需要make install。
     
 gprof2dot.py:
     将gprof的日志绘图。

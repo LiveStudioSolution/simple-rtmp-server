@@ -1272,12 +1272,14 @@ int SrsHttpServer::serve_http(ISrsHttpResponseWriter* w, ISrsHttpMessage* r)
         return http_stream->mux.serve_http(w, r);
     }
     
-    return http_static->mux.serve_http(w, r);
+    int ret=http_static->mux.serve_http(w, r);
+	return ret;
 }
 
 int SrsHttpServer::http_mount(SrsSource* s, SrsRequest* r)
 {
-    return http_stream->http_mount(s, r);
+    int ret=http_stream->http_mount(s, r);
+	return ret;
 }
 
 void SrsHttpServer::http_unmount(SrsSource* s, SrsRequest* r)
@@ -1287,22 +1289,26 @@ void SrsHttpServer::http_unmount(SrsSource* s, SrsRequest* r)
 
 int SrsHttpServer::mount_hls(SrsRequest* r)
 {
-    return http_stream->mount_hls(r);
+   int ret=http_stream->mount_hls(r);
+   return ret;
 }
 
 int SrsHttpServer::hls_update_m3u8(SrsRequest* r, std::string m3u8)
 {
-    return http_stream->hls_update_m3u8(r, m3u8);
+    int ret=http_stream->hls_update_m3u8(r, m3u8);
+	return ret;
 }
 
 int SrsHttpServer::hls_update_ts(SrsRequest* r, std::string uri, std::string ts)
 {
-    return http_stream->hls_update_ts(r, uri, ts);
+    int ret=http_stream->hls_update_ts(r, uri, ts);
+	return ret;
 }
 
 int SrsHttpServer::hls_remove_ts(SrsRequest* r, std::string uri)
 {
-    return http_stream->hls_remove_ts(r, uri);
+    int x=http_stream->hls_remove_ts(r, uri);
+	return x;
 }
 
 void SrsHttpServer::unmount_hls(SrsRequest* r)
